@@ -1,0 +1,207 @@
+#head_bar{
+    background-color: #D21F3C;
+    margin-top: -1pc;
+    margin-left: -0.5pc;
+    border-bottom: solid;
+    border-width: 0.1cm;
+    height: 1.6cm;
+    border-radius: 2px;
+    width: 84.5pc;
+    position: fixed;
+}
+#black_bar{
+    height: 2cm;
+    background-color: black;
+    width: 84.5pc;
+}
+#boxl{
+    position: relative;
+    margin-left: 68%;
+    width: 120px;
+    height: 1.6cm;
+}
+#boxl:hover{
+    background:lightblue;
+}
+#boxm{
+    position: relative;
+    margin-top: -5.5%;
+    margin-left: 78%;
+    width: 120px;
+    height: 1.97cm;
+}
+#boxm:hover{
+    background:lightblue;
+}
+#boxr{
+    position: relative;
+    margin-top: -5.5%;
+    margin-left: 88%;
+    width: 132px;
+    height: 1.97cm;
+}
+#boxr:hover{
+    background:lightblue;
+}
+#about{
+    padding-top: 10px;
+    text-align: center;
+    font-size: 40px;
+    
+}
+#work{
+    padding-top: 24px;
+    text-align: center;
+    font-size: 40px;
+}
+
+#contact{
+    padding-top: 24px;
+    text-align: center;
+    font-size: 40px;
+}
+
+#main_box{
+    background-image: url("https://cdn.hipwallpaper.com/m/45/83/aMq9vQ.jpg");
+    background-color: grey;
+    background-size:100% 100%;
+    height: 16cm;
+    width: 84.5pc;
+    margin-left: -8px;
+}
+#main_heading{
+    
+    padding-top: 10rem;
+    text-align: center;
+    color: blanchedalmond;
+    align-self: center;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+#sub_heading{
+    
+    padding-top: 2rem;
+    text-align: center;
+    color: blanchedalmond;
+    align-self: center;
+    font-size: 2rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#project_box{
+    background-image: url("https://media.istockphoto.com/photos/monochrome-texture-with-white-and-gray-color-picture-id1138782666?k=6&m=1138782666&s=612x612&w=0&h=yxW7wRHOVZ5eA3aCnfNq3c5vorKgo2zmNuoIK0DFiao=");
+    background-color: lightblue;
+    background-size:100% 100%;
+    height: 60pc;
+    width: 84.5pc;
+    margin-left: -8px;
+}
+
+#project{
+    text-align: center;
+    padding-top: 5rem;
+    font-size: 3rem;
+    
+}
+
+#box1{
+    width: 18pc;
+    height: 15pc;  
+    margin-left: 15pc;
+    margin-top: 2pc;
+    padding: 1px;
+}
+#box2{
+    width: 15pc;
+    height: 15pc;
+    margin-left: 55pc;
+    margin-top: -19.6pc;
+}
+#box3{
+    width: 18pc;
+    height: 15pc;    
+    margin-left: 15pc;
+    margin-top: 2pc;
+}
+#box4{
+    width: 18pc;
+    height: 15pc;    
+    margin-left: 55pc;
+    margin-top: -18pc;
+    
+}
+img{
+    width: 18pc;
+    height: 15pc;
+
+}
+#headline1{
+    text-align: center;
+    width: 17.4pc;
+    height: 4pc;
+    margin-left: 15pc;
+    padding: 5px;
+    font-size: 2pc;
+    
+}
+#headline2{
+    font-size: 2pc;
+    width: 17.4pc;
+    height: 4pc;
+    margin-left: 55pc;
+    padding: 5px;
+    text-align: center;
+}
+#headline3{
+    text-align: center;
+    width: 17.4pc;
+    height: 4pc;
+    margin-left: 15pc;
+    padding: 5px;
+    font-size: 2pc;
+    
+}
+#headline4{
+    font-size: 2pc;
+    width: 17.4pc;
+    height: 4pc;
+    margin-left: 55pc;
+    padding: 5px;
+    text-align: center;
+}
+#footerid{
+    width: 84.5pc;
+    height: 5cm;
+    background-color: grey;
+    margin-left: -0.5pc;
+}
+#main_footer{
+    padding-top: 4pc;
+    text-align: center;
+    font-size: 3pc;
+
+}
+#main2_footer{
+    text-align: center;
+    font-size: 1.5pc;
+    padding-top: 1pc;
+}
+#low_bar{
+    margin-top: 5px;
+    height: 0.5pc;
+    background-color: #D21F3c;
+}
+#completion{
+    height: 3pc;
+    background-color: grey;
+}
+#completion_text{
+    text-align: end;
+    padding-right: 50px;
+    padding-top: 10px;
+    font-size: 1.5pc;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: black;
+  }
