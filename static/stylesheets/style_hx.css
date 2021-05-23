@@ -1,0 +1,40 @@
+#bar{
+    width: 84.5pc;
+    height: 4pc;
+    background-color: aquamarine;
+    margin-left: -0.1pc;
+    border-radius: 0.5pc;
+}
+#bartext{
+    font-size: 50px;
+    text-align: center;
+}
+#values{
+    text-align: center;
+    font-size: 40px;
+}
+input{
+    width: 60pc;
+    height: 4pc;
+    margin-left: 12.5pc;
+    margin-top: 1pc;
+}
+button{
+    position: absolute;
+    left: 38pc;
+    bottom: 22pc;
+    width: 10pc;
+    height: 5pc;
+    border-radius: 10pc;
+}
+#outputs{
+    background-color: aquamarine;
+    margin-top: 10pc;
+    width: 10pc;
+    height: 5pc;
+    margin-left: 37.5pc;
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 10pc;
+    border-style: solid;
+}

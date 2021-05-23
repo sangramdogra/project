@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<link href="{{ url_for('static', filename='stylesheets/style_hx.css') }}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../static/stylesheets/style_hx.css" type="text/css">
+<html>
+    <main>
+        <div id= 'bar'>
+            <div id="bartext"> Heat Exchanger</div>
+        </div>
+        <div  id = 'values'>Enter the required values to obtain the performance of HE</div>
+        <form action="{{url_for('he')}}" name="inputs" method="POST">
+            <input type="text" placeholder="Enter the values in this format 'Thickness', 'Temp1In', 'Temp2In', 'Fluid1 (specific heat)', 'Fluid2', 'Q', 'Qr', 'Theta1', 'Theta2', 'm1', 'm2', 'V1In', 'V2In', 'A'" name="textspace" id="textspace">
+            <button type="submit" name="submit">Submit</button>
+        </form>
+        <div id="outputs">
+            {{output}}
+        </div>
+    </main>
+</html>

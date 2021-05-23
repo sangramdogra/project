@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--<link href="{{ url_for('static', filename='stylesheets/style.css') }}" rel="stylesheet" type="text/css"> -->
+<link href="{{ url_for('static', filename='stylesheets/style.css') }}" rel="stylesheet" type="text/css">
 <link href="../static/stylesheets/style.css" rel="stylesheet" type="text/css">
 <title>Portfolio</title>
 <body>
@@ -35,10 +35,10 @@
             These are some of my projects
         </div>
         <div id= 'box1'>
-            <a href="#" target="_blank"><img src='https://i.ytimg.com/vi/-AdmxCJlWBk/maxresdefault.jpg' alt="Heat Exchanger"></a>
+            <a href="{{url_for('he')}}" target="_blank"><img src='https://i.ytimg.com/vi/-AdmxCJlWBk/maxresdefault.jpg' alt="Heat Exchanger"></a>
         </div>
         <div id="headline1">
-            <a href="#" target="_blank">Heat Exchanger Quality prediction</a>
+            <a href="{{url_for('he')}}" target="_blank">Heat Exchanger Quality prediction</a>
         </div>
         <div id= 'box2'>
             <a href="#" target="_blank"><img src='https://base.imgix.net/files/base/ebm/machinedesign/image/2019/04/machinedesign_11433_car_driverless_692832574_0.png?auto=format&fit=crop&h=432&w=768', alt='Autonomous Car'></a>
