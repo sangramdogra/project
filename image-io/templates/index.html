@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<!--<link rel="stylesheet" href="../static/style_img.css" type="text/css"> -->
+<link rel="stylesheet" href="{{url_for('static', filename = 'stylesheets/style_img.css')}}" type="text/css">
+<html>
+    <form action="http://127.0.0.1:5000/" method="POST" enctype="multipart/form-data" id = 'cont' name="cont" >
+        <input type="file" id="img" name="img" accept="image/*, video/*">
+        <button type="submit">Submit</button>
+    </form>
+    <img src="data:image/jpeg;base64,{{ output }}">
+</html>

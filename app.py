@@ -9,16 +9,6 @@ model = pickle.load(open('Heat Exchanger/model.pkl', 'rb')) # Loading model pick
 ss = pickle.load(open('Heat Exchanger/s_scaler_train.pkl', 'rb')) # Loading standard scaler for train
 invss = pickle.load(open('Heat Exchanger/s_scaler_train_y.pkl', 'rb')) # Loading standard scaler for y
 
-def output(*args):
-    arr = np.asarray([args])
-    out = model.predict(arr)
-    return invss.inverse_transform(out)
-
-
-
-
-
-
 
 
 app = Flask(__name__)
@@ -34,12 +24,15 @@ def he():
 @app.route('/he', methods = ['POST'])
 def fun():
     if request.method == "POST":
-        string = request.form.get('textspace')
-        arr = np.asarray(list(map(int, string.split(','))))
-        arr = ss.transform(arr.reshape(1, -1))
+        string = request.form.to_dict()
+        string = list(string.values())[:-1]
+        string = [float(x) if x!=''  else 0 for x in string]
+        arr = np.asarray(string).reshape(1, -1)
+        arr = ss.transform(arr)
         output = model.predict(arr)
         output = invss.inverse_transform(output)
         return render_template('heatexchanger.html', output= output)
+
 
 @app.route('/auto')
 def auto():
@@ -49,12 +42,16 @@ def cam():
     #Testing model to capture face recognition and output via html
     capture = cv2.VideoCapture(0)
     while True:
-        ret, frame = capture.read()
-        faces, conf = cv.detect_face(frame)
+        _, frame = capture.read()
+        scale = (frame.shape[0] * frame.shape[1]) / (1000 * 1000)
+        faces, _ = cv.detect_face(frame)
         if faces != []:
             for face in faces:
+                temp = frame[face[1]:face[3], face[0]:face[2]]
+                label, confidence = cv.detect_gender(temp)
                 frame = cv2.rectangle(frame, (face[0], face[1]), (face[2], face[3]), (255, 0, 0))
-        ret, frame_buff = cv2.imencode('.jpg', frame)
+                frame = cv2.putText(frame, label[np.argmax(confidence)], (face[2], face[3]+2), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0))
+        _, frame_buff = cv2.imencode('.jpg', frame)
         yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(frame_buff) + b'\r\n')
 
 @app.route('/video_feed')
@@ -63,4 +60,4 @@ def video_feed():
     
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
