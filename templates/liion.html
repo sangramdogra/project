@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Li-Ion Batteries
+        </title>
+        <header>State of Health prediction for Lithium Ion Batteries</header>
+    </head>
+    <body>
+        <div>
+            Enter the text file containing battery time based characterstics. (Temperature (Ambient constant), voltage, Current, Temperature)
+        </div>
+        <form action="{{url_for('li')}}" method="POST" enctype="multipart/form-data">
+            <div id = 'container'>
+                <input type= "file" name="input_file" id="input_file">
+                <button type="submit" id="submit"> Submit</button>
+            </div>
+        </form>
+        
+        <div>{{output}}</div>
+    </body>
+</html>

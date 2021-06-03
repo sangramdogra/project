@@ -8,11 +8,34 @@
         </div>
         <div  id = 'values'>Enter the required values to obtain the performance of HE</div>
         <form action="{{url_for('he')}}" name="inputs" method="POST">
-            <input type="text" placeholder="Enter the values in this format 'Thickness', 'Temp1In', 'Temp2In', 'Fluid1 (specific heat)', 'Fluid2', 'Q', 'Qr', 'Theta1', 'Theta2', 'm1', 'm2', 'V1In', 'V2In', 'A'" name="textspace" id="textspace">
-            <button type="submit" name="submit">Submit</button>
+
+            <ul>
+                <li><input type="Thickness" placeholder="Enter the values" name="Thickness" id="Thickness">Thickness</li>
+                <li><input type="Temp1In" placeholder="Enter the values" name="Temp1In" id="Temp1In">Temperature Inlet 1</li>
+                <li><input type="Temp2In" placeholder="Enter the values" name="Temp2In" id="Temp2In">Temperature Inlet 2</li>
+                <li><input type="Fluid1" placeholder="Enter the values" name="Fluid1" id="Fluid1">Specific heat Fluid 1</li>
+            </ul>
+            <ul>
+                <li><input type="Fluid2" placeholder="Enter the values" name="Fluid2" id="Fluid2">Specific heat Fluid 2</li>
+                <li><input type="Q" placeholder="Enter the values" name="Q" id="Q">Heat Capacity 1</li>
+                <li><input type="Qr" placeholder="Enter the values" name="Qr" id="Qr">heat Capacity 2</li>
+                <li><input type="Theta1" placeholder="Enter the values" name="Theta1" id="Theta1">parameter: Theta1</li>
+            </ul>
+            <ul>
+                <li><input type="Theta2" placeholder="Enter the values" name="Theta2" id="Theta2">parameter: Theta2</li>
+                <li><input type="m1" placeholder="Enter the values" name="m1" id="m1">parameter: M1</li>
+                <li><input type="m2" placeholder="Enter the values" name="m2" id="m2">parameter: M2</li>
+                <li><input type="V1In" placeholder="Enter the values" name="V1In" id="V1In">Flowrate F1</li>
+            </ul>
+            <ul>
+                <li><input type="V2In" placeholder="Enter the values" name="V2In" id="V2In">Flowrate F2</li>
+                <li><input type="A" placeholder="Enter the values" name="A" id="A">Area</li>
+                <button type="submit" name="submit">Submit</button>
+            </ul>
+            
         </form>
         <div id="outputs">
-            {{output}}
+            LMTD= {{output}}
         </div>
     </main>
 </html>
