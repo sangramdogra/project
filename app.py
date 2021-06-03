@@ -5,10 +5,13 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import cvlib as cv
+from resources.preprocess import *
+from werkzeug.utils import secure_filename
+
 model = pickle.load(open('Heat Exchanger/model.pkl', 'rb')) # Loading model pickle
 ss = pickle.load(open('Heat Exchanger/s_scaler_train.pkl', 'rb')) # Loading standard scaler for train
 invss = pickle.load(open('Heat Exchanger/s_scaler_train_y.pkl', 'rb')) # Loading standard scaler for y
-
+model_li = pickle.load(open('li-ion/ridge.pkl','rb'))
 
 
 app = Flask(__name__)
@@ -33,6 +36,19 @@ def fun():
         output = invss.inverse_transform(output)
         return render_template('heatexchanger.html', output= output)
 
+@app.route('/li')
+def li():
+    return render_template('liion.html')
+
+@app.route('/li', methods = ['GET', 'POST'])
+def function():
+    if request.method == "POST":
+        file = request.files['input_file']
+        file.save(secure_filename(file.filename))
+        data = preprocess(file.filename)
+        pred= model_li.predict(data)
+        return render_template('liion.html', output = pred[0])
+
 
 @app.route('/auto')
 def auto():
@@ -43,7 +59,6 @@ def cam():
     capture = cv2.VideoCapture(0)
     while True:
         _, frame = capture.read()
-        scale = (frame.shape[0] * frame.shape[1]) / (1000 * 1000)
         faces, _ = cv.detect_face(frame)
         if faces != []:
             for face in faces:
