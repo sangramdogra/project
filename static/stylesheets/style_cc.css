@@ -1,0 +1,20 @@
+header{
+    background-color: lawngreen;
+    font-size: 30px;
+    text-align: center;
+}
+#text{
+    margin-top: 2pc;
+    text-align: center;
+    font-size: 25px;
+}
+#form{
+    margin-top: 2pc;
+    text-align: center;
+
+}
+#output{
+    text-align: center;
+    font-size: 22px;
+    margin-top: 4pc;
+}

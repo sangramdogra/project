@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="../static/stylesheets/style_cc.css">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'stylesheets/style_cc.css')}}">
+    <head>
+        <title>
+            Human Activity Recognition
+        </title>
+        <header>Activity recognition based on gyroscopic and accelerometer data</header>
+    </head>
+    <body>
+        <div id="text">
+            Enter the text file containing time based characterstics (shape = (n, 128, 9)).
+        </div>
+        <form action="{{url_for('human_activity')}}" method="POST" enctype="multipart/form-data" id="form">
+            <div id = 'container'>
+                <input type= "file" name="input_file" id="input_file">
+                <button type="submit" id="submit"> Submit</button>
+            </div>
+        </form>
+        
+        <div id="output">Person is <b>{{output}}</b></div>
+    </body>
+</html>
