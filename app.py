@@ -5,15 +5,19 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import cvlib as cv
+from numpy.core.numeric import outer
 from resources.preprocess import *
 from werkzeug.utils import secure_filename
+import os
+from keras.models import load_model
 
 model = pickle.load(open('Heat Exchanger/model.pkl', 'rb')) # Loading model pickle
 ss = pickle.load(open('Heat Exchanger/s_scaler_train.pkl', 'rb')) # Loading standard scaler for train
 invss = pickle.load(open('Heat Exchanger/s_scaler_train_y.pkl', 'rb')) # Loading standard scaler for y
 model_li = pickle.load(open('li-ion/ridge.pkl','rb'))
 
-
+model_ha = load_model('Human Activity/lstm_model.h5')
+upload_dir = 'DIR'
 app = Flask(__name__)
 
 @app.route('/')
@@ -36,6 +40,29 @@ def fun():
         output = invss.inverse_transform(output)
         return render_template('heatexchanger.html', output= output)
 
+@app.route('/human_activity')
+def human_activity():
+    return render_template('human_activity.html')
+
+@app.route('/human_activity', methods = ["GET", "post"])
+def activity_output():
+    ACTIVITIES = {
+    0: 'WALKING',
+    1: 'WALKING_UPSTAIRS',
+    2: 'WALKING_DOWNSTAIRS',
+    3: 'SITTING',
+    4: 'STANDING',
+    5: 'LAYING',
+}
+    if request.method == "POST":
+        file = request.files['input_file']
+        file.save(os.path.join(upload_dir, secure_filename(file.filename)))
+        data = pickle.load(open(upload_dir + '/' + file.filename, 'rb'))
+        pred = np.argmax(model_ha.predict(data))
+        return render_template('human_activity.html', output = ACTIVITIES[pred])
+
+
+
 @app.route('/li')
 def li():
     return render_template('liion.html')
@@ -44,8 +71,8 @@ def li():
 def function():
     if request.method == "POST":
         file = request.files['input_file']
-        file.save(secure_filename(file.filename))
-        data = preprocess(file.filename)
+        file.save(os.path.join(upload_dir, secure_filename(file.filename)))
+        data = preprocess(upload_dir + '/' + file.filename)
         pred= model_li.predict(data)
         return render_template('liion.html', output = pred[0])
 

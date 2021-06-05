@@ -21,7 +21,7 @@ def preprocess(file):
     with open(file, 'r') as f:
         x = f.readlines()
         temp = [float(x[1].split(",")[1])]
-        for i in x[3: len(x)-1]:
+        for i in x[3: len(x)]:
             splitted_string = i.replace('\n', '').split(',')
             if splitted_string[0] == "voltage_measured":
                 for j in (splitted_string[1: len(splitted_string)-1]):
@@ -29,7 +29,7 @@ def preprocess(file):
             if splitted_string[0] == "temperature_measured":
                 for j in (splitted_string[1: len(splitted_string)-1]):
                     temperature = np.append(temperature, float(j))
-            if splitted_string[0] == "current_charge":
+            if splitted_string[0] == "current_measured":
                 for j in (splitted_string[1: len(splitted_string)-1]):
                     current = np.append(current, float(j))             
         f.close()
