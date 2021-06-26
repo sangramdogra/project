@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import cvlib as cv
-from numpy.core.numeric import outer
+import imutils
 from resources.preprocess import *
 from werkzeug.utils import secure_filename
 import os
@@ -100,6 +100,35 @@ def cam():
 def video_feed():
     return Response(cam(), mimetype='multipart/x-mixed-replace; boundary=frame')
     
+@app.route('/self_driven')
+def self_driven():
+    return render_template('self_driven_car.html')
+
+def automate():
+    img = cv2.imread('steering_wheel_image.jpg')
+    img = cv2.resize(img, (64, 64))
+    i = -1 
+    try:
+        with open('autopilot/Autopilot-TensorFlow-master/driving_dataset/data.txt', 'r') as f:
+            x = f.readlines()
+            f.close()
+        
+        while (True):
+            i+=1
+            img2 = cv2.imread('autopilot/Autopilot-TensorFlow-master/driving_dataset/' + x[i].split(' ')[0])
+            temp = img2[-64:,-64:]
+            img1 = imutils.rotate(img, angle = -float(x[i].split(' ')[1].strip('\n')))
+            weighted = cv2.addWeighted(img1, 1, temp, 0.1, 0.0)
+            img2[-64:,-64:] = weighted
+            _, frame_buff = cv2.imencode('.jpg', img2)
+            yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(frame_buff) + b'\r\n')
+    except:
+        yield ('End Of Loop')
+@app.route('/automation')
+def automation():
+    return Response(automate(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    
+
 
 if __name__ == '__main__':
     app.run(debug = True)
