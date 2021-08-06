@@ -6,3 +6,4 @@ Showcase for Projects
 3. LI-ION SOH Prediction
 4. Human Activity Recognition
 + Simply clone the repo to your local system and run script (python app.py) using command
++ Kindly update the libraries/modules in case of any import errors.
